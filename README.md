@@ -9,7 +9,7 @@
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
 
-[Live Demo](https://heavydutyparts-or-heavyduty-parts.netlify.app) • [Report Bug](https://github.com/irfanshaikh110805-glitch/heavydutyparts-or-heavyduty-parts/issues) • [Request Feature](https://github.com/irfanshaikh110805-glitch/heavydutyparts-or-heavyduty-parts/issues)
+[Live Demo](https://heavydutyparts-shop.netlify.app) • [Report Bug](https://github.com/irfanshaikh110805-glitch/heavydutyparts-or-heavyduty-parts/issues) • [Request Feature](https://github.com/irfanshaikh110805-glitch/heavydutyparts-or-heavyduty-parts/issues)
 
 </div>
 
