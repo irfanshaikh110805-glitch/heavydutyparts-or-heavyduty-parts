@@ -37,7 +37,7 @@ export default function Welcome() {
           <div className="flex space-x-4">
             <button 
               onClick={handleExploreClick}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition-colors"
+              className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md transition-colors font-semibold"
             >
               Explore Products
             </button>
@@ -57,7 +57,7 @@ export default function Welcome() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={handleExploreClick}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium flex items-center justify-center transition-all transform hover:scale-105"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-semibold flex items-center justify-center transition-all transform hover:scale-105"
               >
                 Browse Catalog <ArrowRight className="ml-2 h-5 w-5" />
               </button>
@@ -76,9 +76,9 @@ export default function Welcome() {
       <section id="about" className="py-16 bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">About <span className="text-orange-500">AdiSync Solutions</span></h2>
+            <h2 className="text-3xl font-bold mb-4">About <span className="text-orange-500">HeavyDuty Parts</span></h2>
             <p className="text-gray-300 leading-relaxed">
-              AdiSync Solutions is a leading provider of industrial hardware parts and machinery components. 
+              HeavyDuty Parts is a leading provider of industrial hardware parts and machinery components. 
               With years of experience in the industry, we have established ourselves as a trusted partner for businesses 
               across various sectors. Our commitment to quality, reliability, and customer satisfaction sets us apart.
             </p>
@@ -181,7 +181,7 @@ export default function Welcome() {
           <div className="mt-12 text-center">
             <button 
               onClick={handleExploreClick}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium inline-flex items-center transition-all transform hover:scale-105"
+              className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-semibold inline-flex items-center transition-all transform hover:scale-105"
             >
               Explore Our Products <ArrowRight className="ml-2 h-5 w-5" />
             </button>
@@ -198,7 +198,7 @@ export default function Welcome() {
           </p>
           <button 
             onClick={handleExploreClick}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium inline-flex items-center transition-all transform hover:scale-105"
+            className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-semibold inline-flex items-center transition-all transform hover:scale-105"
           >
             Browse All Products <ArrowRight className="ml-2 h-5 w-5" />
           </button>

@@ -1,14 +1,13 @@
 import { Search, ShoppingCart, Phone, Mail, Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import CurrencySelector from './CurrencySelector';
 
 interface HeaderProps {
   cartItemCount: number;
   onCartClick: () => void;
   onSearchChange: (query: string) => void;
-  onCurrencyChange: (currency: string) => void;
-  currentCurrency: string;
   onCategorySelect: (category: string) => void;
+  onCurrencyChange?: (currency: string) => void;
+  currentCurrency?: string;
 }
 
 interface MenuCategory {
@@ -94,9 +93,7 @@ const menuCategories: MenuCategory[] = [
 export default function Header({ 
   cartItemCount, 
   onCartClick, 
-  onSearchChange, 
-  onCurrencyChange, 
-  currentCurrency,
+  onSearchChange,
   onCategorySelect 
 }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -115,15 +112,15 @@ export default function Header({
   };
 
   return (
-    <header className="bg-gray-800 shadow-lg sticky top-0 z-50">
+    <header className="bg-gray-800 shadow-lg sticky top-0 z-50 glass-effect border-b border-gray-700">
       {/* Main header */}
       <div className="w-full px-2 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between gap-1 sm:gap-2">
           {/* Logo */}
           <div className="flex items-center min-w-0 flex-shrink-0">
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white truncate">
-              <span className="sm:hidden">AdiSync</span>
-              <span className="hidden sm:block">AdiSync Solutions</span>
+              <span className="sm:hidden">HeavyDuty</span>
+              <span className="hidden sm:block">HeavyDuty Parts</span>
             </h1>
             <span className="ml-2 lg:ml-3 text-xs lg:text-sm text-orange-400 hidden lg:block">Industrial Hardware Parts</span>
           </div>
@@ -141,29 +138,23 @@ export default function Header({
               <button
                 type="submit"
                 title="Search"
-                className="px-2 sm:px-3 lg:px-6 py-2 bg-orange-500 text-white rounded-r-md hover:bg-orange-600 transition-colors flex-shrink-0"
+                className="px-2 sm:px-3 lg:px-6 py-2 bg-orange-500 text-white rounded-r-md hover:bg-orange-600 transition-bounce active:scale-95 hover:shadow-lg hover:shadow-orange-500/50 flex-shrink-0"
               >
                 <Search className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
               </button>
             </form>
           </div>
 
-          {/* Cart, Currency Selector and Mobile Menu */}
+          {/* Cart and Mobile Menu */}
           <div className="flex items-center space-x-2 flex-shrink-0">
-            <div className="hidden sm:block">
-              <CurrencySelector 
-                onCurrencyChange={onCurrencyChange} 
-                currentCurrency={currentCurrency} 
-              />
-            </div>
             <button
               onClick={onCartClick}
-              className="relative flex items-center px-1.5 sm:px-2 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors"
+              className="relative flex items-center px-1.5 sm:px-2 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-bounce active:scale-95"
             >
               <ShoppingCart className="w-4 h-4 lg:w-5 lg:h-5" />
               <span className="hidden lg:block text-sm">Cart</span>
               {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 lg:-top-2 lg:-right-2 bg-orange-500 text-white text-xs rounded-full w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 lg:-top-2 lg:-right-2 bg-orange-500 text-white text-xs rounded-full w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center animate-scale-in font-bold">
                   {cartItemCount}
                 </span>
               )}
@@ -346,13 +337,6 @@ export default function Header({
               </nav>
               
               <div className="mt-4 pt-4 border-t border-gray-600 text-sm text-gray-400">
-                <div className="mb-4">
-                  <p className="mb-2 text-gray-300">Select Currency:</p>
-                  <CurrencySelector 
-                    onCurrencyChange={onCurrencyChange} 
-                    currentCurrency={currentCurrency} 
-                  />
-                </div>
                 <div className="flex items-center space-x-1 mb-2">
                   <Phone className="w-4 h-4" />
                   <span>+91 99642 64412</span>

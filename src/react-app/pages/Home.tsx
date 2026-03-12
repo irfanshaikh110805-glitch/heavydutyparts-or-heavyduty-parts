@@ -10,6 +10,8 @@ import FeaturesSection from '@/react-app/components/FeaturesSection';
 import TrustBadges from '@/react-app/components/TrustBadges';
 import Footer from '@/react-app/components/Footer';
 import Cart from '@/react-app/components/Cart';
+import Toast from '@/react-app/components/Toast';
+import ScrollToTop from '@/react-app/components/ScrollToTop';
 
 import { mockProducts } from '@/react-app/mocks/products';
 
@@ -32,6 +34,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
   const [currentCurrency, setCurrentCurrency] = useState('INR');
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   // Fetch all products
   useEffect(() => {
@@ -131,6 +134,7 @@ export default function Home() {
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
+    setToast({ message: `${product.name} added to cart!`, type: 'success' });
   };
 
   const handleCheckout = async () => {
@@ -173,7 +177,7 @@ export default function Home() {
       
       // Fallback: Generate WhatsApp message directly on frontend
       const orderId = Date.now();
-      let whatsappMessage = `*NEW ORDER - AdiSync Solutions*\n\n`;
+      let whatsappMessage = `*NEW ORDER - HeavyDuty Parts*\n\n`;
       whatsappMessage += `Order ID: #${orderId}\n`;
       whatsappMessage += `*ITEMS:*\n`;
       
@@ -271,6 +275,18 @@ export default function Home() {
         onRemoveItem={removeItem}
         onCheckout={handleCheckout}
       />
+
+      {/* Toast Notification */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 }

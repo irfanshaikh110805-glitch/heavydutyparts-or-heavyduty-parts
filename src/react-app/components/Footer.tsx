@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-white">AdiSync Solutions</h3>
+            <h3 className="text-xl font-bold text-white">HeavyDuty Parts</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               Your trusted partner for premium industrial hardware parts and machinery components. 
               Quality guaranteed with fast delivery across India.
@@ -98,7 +98,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                © 2024 AdiSync Solutions. All rights reserved.
+                © 2024 HeavyDuty Parts. All rights reserved.
               </p>
             </div>
             <div className="flex space-x-6">

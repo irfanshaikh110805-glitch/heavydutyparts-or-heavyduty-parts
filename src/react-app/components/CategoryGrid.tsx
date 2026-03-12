@@ -57,24 +57,24 @@ const categories = [
 
 export default function CategoryGrid({ onCategorySelect }: CategoryGridProps) {
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-gray-100">
+    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12 animate-fade-in">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Industrial Parts Categories</h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">Browse our comprehensive selection of high-quality parts and components for construction and industrial equipment</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => onCategorySelect(category.slug)}
-              className="group bg-white p-3 sm:p-4 lg:p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-200 hover:border-orange-300 hover:-translate-y-1"
+              className={`group bg-white p-3 sm:p-4 lg:p-6 rounded-xl shadow-md hover:shadow-2xl transition-smooth text-center border border-gray-200 hover:border-orange-400 hover-lift animate-scale-in stagger-${Math.min(index + 1, 6)}`}
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center group-hover:from-orange-100 group-hover:to-orange-200 transition-all duration-300">
-                <category.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-gray-700 group-hover:text-orange-600 transition-colors duration-300" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center group-hover:from-orange-100 group-hover:to-orange-200 transition-smooth group-hover:scale-110 group-hover:rotate-6">
+                <category.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-gray-700 group-hover:text-orange-600 transition-smooth" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1 sm:mb-2 group-hover:text-orange-600 transition-colors text-xs sm:text-sm lg:text-base">{category.name}</h3>
+              <h3 className="font-semibold text-gray-900 mb-1 sm:mb-2 group-hover:text-orange-600 transition-smooth text-xs sm:text-sm lg:text-base">{category.name}</h3>
               <p className="text-xs sm:text-sm text-gray-500 group-hover:text-gray-600 leading-tight">{category.description}</p>
             </button>
           ))}

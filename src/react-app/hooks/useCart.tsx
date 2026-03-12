@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, ReactNode } from 'react';
+import { createContext, useContext, useReducer, ReactNode, useEffect, useMemo, useCallback } from 'react';
 import { Product, CartItem } from '@/shared/types';
 
 interface CartState {
@@ -106,42 +106,74 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const CART_STORAGE_KEY = 'heavyduty-cart';
+
 export function CartProvider({ children }: { children: ReactNode }) {
+  // Initialize state from localStorage
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],
     isOpen: false
+  }, (initial: CartState) => {
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        return { ...initial, items: parsed };
+      }
+    } catch (error) {
+      console.error('Failed to load cart from storage:', error);
+    }
+    return initial;
   });
 
-  const itemCount = state.items.reduce((total, item) => total + item.quantity, 0);
-  const total = state.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  // Persist cart to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.items));
+    } catch (error) {
+      console.error('Failed to save cart to storage:', error);
+    }
+  }, [state.items]);
 
-  const addToCart = (product: Product) => {
+  // Memoize computed values
+  const itemCount = useMemo(
+    () => state.items.reduce((total: number, item: CartItem) => total + item.quantity, 0),
+    [state.items]
+  );
+  
+  const total = useMemo(
+    () => state.items.reduce((sum: number, item: CartItem) => sum + (item.product.price * item.quantity), 0),
+    [state.items]
+  );
+
+  // Memoize callbacks
+  const addToCart = useCallback((product: Product) => {
     dispatch({ type: 'ADD_TO_CART', product });
-  };
+  }, []);
 
-  const updateQuantity = (productId: number, quantity: number) => {
+  const updateQuantity = useCallback((productId: number, quantity: number) => {
     dispatch({ type: 'UPDATE_QUANTITY', productId, quantity });
-  };
+  }, []);
 
-  const removeItem = (productId: number) => {
+  const removeItem = useCallback((productId: number) => {
     dispatch({ type: 'REMOVE_ITEM', productId });
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     dispatch({ type: 'CLEAR_CART' });
-  };
+  }, []);
 
-  const toggleCart = () => {
+  const toggleCart = useCallback(() => {
     dispatch({ type: 'TOGGLE_CART' });
-  };
+  }, []);
 
-  const openCart = () => {
+  const openCart = useCallback(() => {
     dispatch({ type: 'OPEN_CART' });
-  };
+  }, []);
 
-  const closeCart = () => {
+  const closeCart = useCallback(() => {
     dispatch({ type: 'CLOSE_CART' });
-  };
+  }, []);
 
   return (
     <CartContext.Provider value={{

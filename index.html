@@ -1,29 +1,44 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta property="og:title" content="AdiSync Solutions"/>
+
+    <!-- Preconnect to external origins to reduce connection latency -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin/>
+    <link rel="dns-prefetch" href="https://images.unsplash.com"/>
+
+    <!-- Preload LCP hero image so it's discoverable from the initial HTML document -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&auto=format&fit=crop&q=80"
+      fetchpriority="high"
+    />
+
+    <!-- SEO / Open Graph -->
+    <meta name="description" content="Industrial hardware parts and machinery components for excavators, hydraulics, and engine systems"/>
+    <meta property="og:title" content="HeavyDuty Parts"/>
     <meta property="og:description" content="Industrial hardware parts and machinery components for excavators, hydraulics, and engine systems"/>
-    <meta property="og:image" content="https://mocha-cdn.com/og.png" type="image/png"/>
-    <meta property="og:url" content="https://7lyktba7ywgke.mocha.app"/>
+    <meta property="og:image" content="https://mocha-cdn.com/og.png"/>
+    <meta property="og:url" content="https://heavydutyparts-shop.netlify.app"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:author" content="AdiSync Solutions"/>
-    <meta property="og:site_name" content="AdiSync Solutions"/>
+    <meta property="og:author" content="HeavyDuty Parts"/>
+    <meta property="og:site_name" content="HeavyDuty Parts"/>
     <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:site" content="@adisync"/>
-    <meta property="twitter:title" content="AdiSync Solutions"/>
+    <meta property="twitter:site" content="@heavydutyparts"/>
+    <meta property="twitter:title" content="HeavyDuty Parts"/>
     <meta property="twitter:description" content="Industrial hardware parts and machinery components for excavators, hydraulics, and engine systems"/>
-    <meta property="twitter:image" content="https://mocha-cdn.com/og.png" type="image/png"/>
+    <meta property="twitter:image" content="https://mocha-cdn.com/og.png"/>
+
+    <!-- Favicons -->
     <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon"/>
     <link rel="apple-touch-icon" sizes="180x180" href="https://mocha-cdn.com/apple-touch-icon.png" type="image/png"/>
-    <title>
-      AdiSync Solutions
-    </title>
+
+    <title>HeavyDuty Parts – Industrial Hardware &amp; Machinery Components</title>
   </head>
   <body>
-    <div id="root">
-    </div>
-    <script type="module" src="/src/react-app/main.tsx">
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/react-app/main.tsx"></script>
   </body>
 </html>
